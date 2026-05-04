@@ -47,7 +47,23 @@ GoWeb is a lightweight Android browser developed by the **LCR Team**. Built with
 ### Screenshots
 
 <p align="center">
-  <i>Screenshots will be added soon</i>
+  <img src="screenshots/浏览器主页.jpg" width="280" alt="Homepage">
+  <br><b>Homepage</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/标签页功能演示.jpg" width="280" alt="Tabs">
+  <br><b>Multi-tab Browsing</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/设置页功能演示.jpg" width="280" alt="Settings">
+  <br><b>Settings</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/查看源代码功能演示.jpg" width="280" alt="View Source">
+  <br><b>View Page Source</b>
 </p>
 
 ### Download
@@ -135,7 +151,23 @@ GoWeb 是一款由 **LCR 团队** 开发的轻量级安卓浏览器。使用纯 
 ### 截图
 
 <p align="center">
-  <i>截图即将添加</i>
+  <img src="screenshots/浏览器主页.jpg" width="280" alt="浏览器主页">
+  <br><b>浏览器主页</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/标签页功能演示.jpg" width="280" alt="标签页功能演示">
+  <br><b>多标签浏览</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/设置页功能演示.jpg" width="280" alt="设置页功能演示">
+  <br><b>设置页面</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/查看源代码功能演示.jpg" width="280" alt="查看源代码功能演示">
+  <br><b>查看网页源代码</b>
 </p>
 
 ### 下载
