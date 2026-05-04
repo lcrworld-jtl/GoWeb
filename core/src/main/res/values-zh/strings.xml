@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GoWeb</string>
+    <string name="app_subtitle">轻快简洁的浏览器</string>
+    <string name="address_hint">搜索或输入网址</string>
+    <string name="search_hint">搜索或输入网址</string>
+
+    <string name="back">后退</string>
+    <string name="forward">前进</string>
+    <string name="refresh">刷新</string>
+    <string name="home">主页</string>
+    <string name="menu">菜单</string>
+    <string name="bookmark">书签</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="close">关闭</string>
+    <string name="share">分享</string>
+    <string name="retry">重试</string>
+
+    <string name="menu_new_tab">新建标签页</string>
+    <string name="menu_bookmarks">书签</string>
+    <string name="menu_history">历史</string>
+    <string name="menu_download">下载</string>
+    <string name="menu_add_bookmark">添加书签</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_settings">设置</string>
+
+    <string name="bookmark_added">已添加书签</string>
+    <string name="bookmark_removed">已移除书签</string>
+    <string name="add_bookmark">添加书签</string>
+    <string name="edit_bookmark">编辑书签</string>
+    <string name="title_label">标题</string>
+    <string name="url_label">网址</string>
+    <string name="url_empty">网址不能为空</string>
+    <string name="no_bookmarks">暂无书签</string>
+    <string name="no_history">暂无历史</string>
+    <string name="no_downloads">暂无下载</string>
+
+    <string name="page_load_error">页面加载失败</string>
+    <string name="downloading">正在下载…</string>
+    <string name="copied">已复制</string>
+    <string name="link_copied">链接已复制</string>
+    <string name="save_image">保存图片</string>
+    <string name="copy_image_url">复制图片链接</string>
+    <string name="copy_link">复制链接</string>
+    <string name="open_in_new_tab">在新标签页打开</string>
+    <string name="download_manager_not_available">下载管理器不可用</string>
+
+    <string name="clear_history">清除历史</string>
+    <string name="history_cleared">历史已清除</string>
+
+    <string name="settings_search_engine">搜索引擎</string>
+    <string name="settings_homepage">主页</string>
+    <string name="settings_user_agent">用户代理</string>
+    <string name="settings_font_size">字体大小</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_night_mode">夜间模式</string>
+    <string name="settings_privacy_mode">隐私模式</string>
+    <string name="settings_enable_js">启用JavaScript</string>
+    <string name="settings_enable_cookies">启用Cookie</string>
+    <string name="settings_block_images">屏蔽图片</string>
+    <string name="settings_clear_cache">清除缓存</string>
+    <string name="settings_clear_history">清除历史</string>
+    <string name="settings_clear_cookies">清除Cookie</string>
+    <string name="settings_clear_all">清除所有数据</string>
+    <string name="settings_about">关于</string>
+    <string name="settings_saved">已保存</string>
+
+    <string name="ua_mobile">移动端</string>
+    <string name="ua_pc">桌面端</string>
+    <string name="ua_custom">自定义</string>
+
+    <string name="language_auto">跟随系统</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+
+    <string name="night_mode_on">夜间模式已开启</string>
+    <string name="night_mode_off">夜间模式已关闭</string>
+    <string name="privacy_mode_on">隐私模式已开启</string>
+    <string name="privacy_mode_off">隐私模式已关闭</string>
+    <string name="js_enabled">JavaScript已启用</string>
+    <string name="js_disabled">JavaScript已禁用</string>
+    <string name="cookies_enabled">Cookie已启用</string>
+    <string name="cookies_disabled">Cookie已禁用</string>
+    <string name="images_blocked">图片已屏蔽</string>
+    <string name="images_allowed">图片已允许</string>
+
+    <string name="confirm_clear_cache">清除所有缓存数据？</string>
+    <string name="confirm_clear_history">清除所有浏览历史？</string>
+    <string name="confirm_clear_cookies">清除所有Cookie？</string>
+    <string name="confirm_clear_all">清除所有数据，包括书签、历史和设置？</string>
+    <string name="cache_cleared">缓存已清除</string>
+    <string name="cookies_cleared">Cookie已清除</string>
+    <string name="all_data_cleared">所有数据已清除</string>
+
+    <string name="about_message">%1$s v%2$s\n轻量极速极简浏览器\n支持 Android 4.4+</string>
+
+    <!-- Error page strings -->
+    <string name="error_tips_title">尝试以下方法</string>
+    <string name="error_tip_1">检查网络连接是否正常</string>
+    <string name="error_tip_2">检查网址是否输入正确</string>
+    <string name="error_tip_3">稍后重试或访问其他网站</string>
+    <string name="error_host_lookup">找不到服务器，请检查网址是否正确</string>
+    <string name="error_connect">无法连接到服务器，请检查网络</string>
+    <string name="error_timeout">连接超时，请检查网络或稍后重试</string>
+    <string name="error_ssl">SSL证书错误，网站可能存在安全问题</string>
+    <string name="error_unknown">发生未知错误，请稍后重试</string>
+
+    <!-- Download strings -->
+    <string name="download_success">已完成</string>
+    <string name="download_pending">等待中</string>
+    <string name="download_running">下载中</string>
+    <string name="download_paused">已暂停</string>
+    <string name="download_failed">失败</string>
+    <string name="download_unknown">未知</string>
+    <string name="download_not_complete">下载未完成</string>
+    <string name="cannot_open_file">无法打开文件</string>
+    <string name="confirm_delete_download">删除此下载记录？</string>
+
+    <!-- Tab strings -->
+    <string name="tabs">标签页</string>
+    <string name="new_tab">新标签页</string>
+    <string name="tab_count">%d 个标签页</string>
+
+    <!-- New feature strings -->
+    <string name="scan_qr">扫码</string>
+    <string name="scan_qr_desc">扫描二维码</string>
+    <string name="find_in_page">页面查找</string>
+    <string name="view_source">查看源代码</string>
+    <string name="add_to_desktop">添加到桌面</string>
+    <string name="save_offline">保存离线页面</string>
+    <string name="saved_offline">已保存离线页面</string>
+    <string name="qr_scan_result">扫描结果</string>
+    <string name="qr_scan_invalid">无效的二维码</string>
+    <string name="find_hint">输入查找内容</string>
+    <string name="find_matches">%1$d/%2$d</string>
+    <string name="find_no_matches">未找到</string>
+    <string name="source_title">源代码: %s</string>
+    <string name="shortcut_added">快捷方式已添加</string>
+    <string name="shortcut_failed">添加快捷方式失败</string>
+
+    <!-- Settings new strings -->
+    <string name="settings_homepage_bg">首页背景</string>
+    <string name="settings_homepage_icon">首页图标</string>
+    <string name="settings_custom_font">自定义字体</string>
+    <string name="settings_set_default">设为默认浏览器</string>
+    <string name="select_image">选择图片</string>
+    <string name="select_font">选择字体文件</string>
+    <string name="bg_set">背景已设置</string>
+    <string name="icon_set">图标已设置</string>
+    <string name="font_set">字体已设置</string>
+    <string name="default_browser_set">已设为默认浏览器</string>
+    <string name="default_browser_failed">设置默认浏览器失败</string>
+
+    <string name="translate_page">翻译页面</string>
+    <string name="translating">正在翻译…</string>
+    <string name="saved_pages">已保存页面</string>
+    <string name="state_on">开启</string>
+    <string name="state_off">关闭</string>
+    <string name="qr_scan_hint">将二维码放入框内，即可自动扫描</string>
+    <string name="time_just_now">刚刚</string>
+    <string name="time_min_ago">分钟前</string>
+    <string name="time_hours_ago">小时前</string>
+    <string name="time_days_ago">天前</string>
+    <string name="app_version">1.0.0</string>
+    <string name="press_again_to_exit">再按一次退出</string>
+    <string name="camera_permission_denied">需要摄像头权限才能扫码</string>
+    <string name="camera_open_failed">无法打开摄像头</string>
+    <string name="camera_denied">摄像头权限被拒绝</string>
+    <string name="view_source_failed">无法获取源代码</string>
+    <string name="view_source_error">获取源代码失败</string>
+    <string name="android_8_required">需要 Android 8.0 或以上</string>
+    <string name="operation_failed">操作失败</string>
+    <string name="save_failed">保存失败</string>
+    <string name="tabs_load_failed">加载标签页失败</string>
+    <string name="no_saved_pages">没有已保存的页面</string>
+    <string name="storage_permission_granted">存储权限已授予</string>
+    <string name="storage_permission_denied">存储权限被拒绝</string>
+    <string name="no_tabs">没有标签页</string>
+    <string name="restore_default">恢复默认</string>
+    <string name="restored_default">已恢复默认设置</string>
+    <string name="qr_manual_hint">如果扫描不成功，可以手动输入网址或从剪贴板粘贴：</string>
+    <string name="qr_input_hint">输入网址或文本</string>
+    <string name="qr_scan_title">二维码扫描</string>
+    <string name="paste_from_clipboard">粘贴</string>
+    <string name="go">前往</string>
+
+    <string name="ssl_error_title">SSL证书错误</string>
+    <string name="ssl_error_message">该网站的安全证书不受信任。是否继续访问？</string>
+    <string name="btn_continue">继续</string>
+    <string name="confirm_resubmission_title">确认重新提交</string>
+    <string name="confirm_resubmission_message">此页面需要您之前输入的数据。是否重新发送？</string>
+    <string name="btn_resend">重新发送</string>
+    <string name="location_access_title">位置访问</string>
+    <string name="location_access_message">允许 %1$s 访问您的位置？</string>
+    <string name="btn_allow">允许</string>
+    <string name="btn_deny">拒绝</string>
+    <string name="select_file">选择文件</string>
+    <string name="btn_open">打开</string>
+    <string name="btn_copy">复制</string>
+    <string name="changelog_title">更新日志</string>
+    <string name="version_history_title">版本历史</string>
+    <string name="about_text">GoWeb v1.0.0\n轻量化浏览器｜由LCR团队开发\n支持Android 4.4+</string>
+    <string name="new_tab_default">新标签页</string>
+    <string name="download_desc">GoWeb下载</string>
+    <string name="camera_permission_title">摄像头权限</string>
+    <string name="camera_permission_rationale">需要摄像头权限来扫描二维码，请授予权限以继续。</string>
+    <string name="storage_permission_title">存储权限</string>
+    <string name="storage_permission_rationale">需要存储权限来保存文件，请授予权限以继续。</string>
+</resources>

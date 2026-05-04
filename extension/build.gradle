@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.goweb.browser.extension'
+    compileSdk 36
+    buildToolsVersion "37.0.0"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

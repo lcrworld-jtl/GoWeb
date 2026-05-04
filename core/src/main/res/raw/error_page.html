@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GoWeb - Page Error</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(135deg,#f0f7f4 0%,#e8f5e9 50%,#f0f7f4 100%);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:24px;}
+.container{background:#ffffff;border-radius:24px;padding:48px 32px;text-align:center;max-width:400px;width:100%;box-shadow:0 12px 48px rgba(45,106,79,0.1),0 4px 16px rgba(45,106,79,0.06);position:relative;overflow:hidden;}
+.container::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2d6a4f,#52b788,#95d5b2);border-radius:24px 24px 0 0;}
+.icon-wrapper{width:80px;height:80px;margin:0 auto 24px;background:linear-gradient(135deg,#e0f0e9,#d0ead8);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.icon{font-size:40px;}
+h2{color:#2d6a4f;margin:0 0 8px 0;font-size:22px;font-weight:700;letter-spacing:-0.3px;}
+.subtitle{color:#52b788;margin:0 0 20px 0;font-size:13px;font-weight:500;}
+.desc{color:#666;margin:0 0 16px 0;font-size:14px;line-height:1.7;}
+.url-box{background:#f5faf7;border:1px solid #e0f0e9;border-radius:12px;padding:12px 16px;margin:0 0 24px 0;word-break:break-all;font-size:12px;color:#888;font-family:'SF Mono',Monaco,Consolas,monospace;text-align:left;line-height:1.5;}
+.btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;text-decoration:none;border-radius:28px;font-size:15px;font-weight:600;transition:all 0.3s ease;box-shadow:0 6px 20px rgba(45,106,79,0.25);cursor:pointer;border:none;outline:none;}
+.btn:hover{background:linear-gradient(135deg,#40916c,#52b788);transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,106,79,0.35);}
+.btn:active{transform:translateY(0);box-shadow:0 4px 12px rgba(45,106,79,0.2);}
+.tips{margin-top:28px;padding-top:24px;border-top:1px solid #e8f5e9;text-align:left;}
+.tips-title{color:#2d6a4f;font-size:14px;margin-bottom:12px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.tips-title::before{content:'💡';font-size:16px;}
+.tips-item{color:#888;font-size:13px;margin:8px 0;padding-left:20px;position:relative;line-height:1.5;}
+.tips-item::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;background:linear-gradient(135deg,#52b788,#95d5b2);border-radius:50%;}
+.error-code{margin-top:20px;padding-top:16px;border-top:1px solid #f0f7f4;font-size:11px;color:#bbb;}
+.footer{margin-top:24px;font-size:11px;color:#ccc;}
+.footer a{color:#52b788;text-decoration:none;}
+@media(max-width:360px){
+.container{padding:32px 20px;border-radius:20px;}
+h2{font-size:20px;}
+.btn{padding:12px 32px;font-size:14px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="icon-wrapper">
+<div class="icon">🌐</div>
+</div>
+<h2 id="error-title">Page Load Error</h2>
+<p class="subtitle" id="error-subtitle">Something went wrong</p>
+<p class="desc" id="error-desc">We couldn't load the page you requested. This might be caused by a network issue or an invalid URL.</p>
+<div class="url-box" id="error-url">https://example.com</div>
+<a class="btn" id="retry-btn" href="#">Retry</a>
+<div class="tips">
+<div class="tips-title">Try the following</div>
+<div class="tips-item">Check your network connection and make sure Wi-Fi or mobile data is enabled</div>
+<div class="tips-item">Verify the URL is correct and try typing it again</div>
+<div class="tips-item">Try again later - the server might be temporarily unavailable</div>
+<div class="tips-item">Clear browser cache in Settings and try loading the page again</div>
+</div>
+<div class="error-code" id="error-code">Error Code: UNKNOWN</div>
+<div class="footer">GoWeb Browser · Fast &amp; Lightweight</div>
+</div>
+<script>
+function getQueryParam(name){var url=window.location.href;name=name.replace(/[\[\]]/g,'\\$&');var regex=new RegExp('[?&]'+name+'(=([^&#]*)|&|#|$)');var results=regex.exec(url);if(!results)return null;if(!results[2])return '';return decodeURIComponent(results[2].replace(/\+/g,' '));}
+var errorCode=getQueryParam('code')||'UNKNOWN';
+var errorUrl=getQueryParam('url')||'';
+var errorTitle=getQueryParam('title')||'Page Load Error';
+var errorDesc=getQueryParam('desc')||'We couldn\'t load the page you requested.';
+var titleEl=document.getElementById('error-title');
+var descEl=document.getElementById('error-desc');
+var urlEl=document.getElementById('error-url');
+var codeEl=document.getElementById('error-code');
+var retryBtn=document.getElementById('retry-btn');
+if(errorTitle)titleEl.textContent=errorTitle;
+if(errorDesc)descEl.textContent=errorDesc;
+if(errorUrl){urlEl.textContent=errorUrl;retryBtn.href=errorUrl;}
+codeEl.textContent='Error Code: '+errorCode;
+</script>
+</body>
+</html>

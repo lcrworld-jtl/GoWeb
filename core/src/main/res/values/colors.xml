@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2d6a4f</color>
+    <color name="colorPrimaryDark">#1b4332</color>
+    <color name="colorAccent">#52b788</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+    <color name="text_primary">#2d6a4f</color>
+    <color name="text_secondary">#52b788</color>
+    <color name="text_hint">#999999</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="toolbar_bg">#2d6a4f</color>
+    <color name="progress_color">#2d6a4f</color>
+</resources>

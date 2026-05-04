@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GoWeb - Welcome</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f0f7f4 0%,#e8f5e9 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0;margin:0;overflow-x:hidden;}
+.header{width:100%;background:linear-gradient(135deg,#2d6a4f,#40916c);padding:60px 24px 40px;text-align:center;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;bottom:-20px;left:-10%;width:120%;height:40px;background:#f0f7f4;border-radius:50% 50% 0 0;}
+.logo{width:72px;height:72px;background:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 24px rgba(0,0,0,0.15);font-size:36px;}
+.app-name{color:#fff;font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;}
+.app-slogan{color:rgba(255,255,255,0.8);font-size:14px;font-weight:400;}
+.search-section{width:100%;max-width:480px;padding:0 20px;margin-top:-20px;position:relative;z-index:10;}
+.search-box{background:#fff;border-radius:28px;padding:4px;display:flex;align-items:center;box-shadow:0 4px 20px rgba(45,106,79,0.12);margin-bottom:24px;}
+.search-icon{padding:0 12px 0 16px;color:#999;font-size:18px;}
+.search-input{flex:1;border:none;outline:none;font-size:16px;padding:14px 0;background:transparent;color:#333;}
+.search-input::placeholder{color:#bbb;}
+.search-btn{background:linear-gradient(135deg,#2d6a4f,#52b788);color:#fff;border:none;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:600;cursor:pointer;margin-right:4px;}
+.quick-links{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 20px;max-width:480px;width:100%;margin-bottom:32px;}
+.quick-link{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#333;}
+.quick-link-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:8px;transition:transform 0.2s;}
+.quick-link-icon:active{transform:scale(0.9);}
+.ql-bookmark{background:#e8f5e9;}
+.ql-history{background:#fff3e0;}
+.ql-download{background:#e3f2fd;}
+.ql-settings{background:#fce4ec;}
+.quick-link-label{font-size:12px;color:#666;}
+.news-section{width:100%;max-width:480px;padding:0 20px;margin-bottom:32px;}
+.section-title{font-size:16px;font-weight:700;color:#2d6a4f;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.news-card{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);text-decoration:none;display:block;transition:transform 0.2s;}
+.news-card:active{transform:scale(0.98);}
+.news-title{font-size:14px;font-weight:600;color:#333;margin-bottom:4px;line-height:1.4;}
+.news-source{font-size:12px;color:#999;}
+.tips-section{width:100%;max-width:480px;padding:0 20px 40px;}
+.tip-card{background:linear-gradient(135deg,#2d6a4f,#40916c);border-radius:16px;padding:20px;color:#fff;margin-bottom:12px;}
+.tip-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+.tip-desc{font-size:13px;opacity:0.85;line-height:1.5;}
+.footer{text-align:center;padding:20px;font-size:12px;color:#bbb;width:100%;}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">🌐</div>
+<div class="app-name">GoWeb</div>
+<div class="app-slogan">Fast · Secure · Lightweight</div>
+</div>
+<div class="search-section">
+<div class="search-box">
+<span class="search-icon">🔍</span>
+<input class="search-input" type="text" placeholder="Search or enter URL..." id="searchInput">
+<button class="search-btn" id="searchBtn">Go</button>
+</div>
+</div>
+<div class="quick-links">
+<a class="quick-link" href="goweb://bookmarks">
+<div class="quick-link-icon ql-bookmark">⭐</div>
+<span class="quick-link-label">Bookmarks</span>
+</a>
+<a class="quick-link" href="goweb://history">
+<div class="quick-link-icon ql-history">📋</div>
+<span class="quick-link-label">History</span>
+</a>
+<a class="quick-link" href="goweb://downloads">
+<div class="quick-link-icon ql-download">📥</div>
+<span class="quick-link-label">Downloads</span>
+</a>
+<a class="quick-link" href="goweb://settings">
+<div class="quick-link-icon ql-settings">⚙️</div>
+<span class="quick-link-label">Settings</span>
+</a>
+</div>
+<div class="news-section">
+<div class="section-title">📰 Quick Access</div>
+<a class="news-card" href="https://www.baidu.com">
+<div class="news-title">Baidu</div>
+<div class="news-source">www.baidu.com</div>
+</a>
+<a class="news-card" href="https://www.bing.com">
+<div class="news-title">Bing</div>
+<div class="news-source">www.bing.com</div>
+</a>
+<a class="news-card" href="https://github.com">
+<div class="news-title">GitHub</div>
+<div class="news-source">github.com</div>
+</a>
+</div>
+<div class="tips-section">
+<div class="tip-card">
+<div class="tip-title">💡 Quick Tip</div>
+<div class="tip-desc">Long press on images to save them. Long press on links to open in a new tab. Swipe down to refresh the page.</div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🔒 Privacy Mode</div>
+<div class="tip-desc">Enable Privacy Mode in Settings to automatically clear browsing history, cookies, and cache when you exit the browser.</div>
+</div>
+</div>
+<div class="footer">GoWeb Browser v12 · Made with ❤️</div>
+<script>
+var searchInput=document.getElementById('searchInput');
+var searchBtn=document.getElementById('searchBtn');
+function doSearch(){var q=searchInput.value.trim();if(!q)return;if(q.match(/^https?:\/\//)){window.location.href=q;}else if(q.match(/^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/)){window.location.href='https://'+q;}else{window.location.href='https://www.bing.com/search?q='+encodeURIComponent(q);}}
+searchBtn.addEventListener('click',doSearch);
+searchInput.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
+</script>
+</body>
+</html>

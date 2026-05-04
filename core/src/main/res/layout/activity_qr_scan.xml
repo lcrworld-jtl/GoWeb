@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Scan overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <!-- Scan frame -->
+    <FrameLayout
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000" />
+
+        <!-- Corner markers -->
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_gravity="top|start"
+            android:background="#52b788" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|start"
+            android:background="#52b788" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_gravity="top|end"
+            android:background="#52b788" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|end"
+            android:background="#52b788" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|start"
+            android:background="#52b788" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|start"
+            android:background="#52b788" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|end"
+            android:background="#52b788" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|end"
+            android:background="#52b788" />
+
+        <!-- Scan line -->
+        <View
+            android:id="@+id/scan_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#52b788" />
+
+    </FrameLayout>
+
+    <!-- Top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp"
+        android:background="#CC000000">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_back"
+            android:scaleType="fitCenter"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/scan_qr"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Hint text -->
+    <TextView
+        android:id="@+id/hint_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="100dp"
+        android:text="@string/qr_scan_hint"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF" />
+
+</FrameLayout>

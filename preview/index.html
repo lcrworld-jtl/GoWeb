@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoWeb 浏览器 - 轻快简洁的安卓浏览器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 40%, #52b788 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            padding-top: 20px;
+        }
+
+        /* ===== 手机模拟器 ===== */
+        .phone-wrap {
+            flex-shrink: 0;
+        }
+        .phone {
+            width: 340px;
+            height: 680px;
+            background: #1a1a1a;
+            border-radius: 36px;
+            padding: 10px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .phone::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: #1a1a1a;
+            border-radius: 0 0 12px 12px;
+            z-index: 10;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #F8FAF9;
+            border-radius: 26px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 状态栏 */
+        .status-bar {
+            height: 32px;
+            background: #2d6a4f;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 4px 18px;
+            color: white;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* 顶部工具栏 */
+        .top-bar {
+            height: 48px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+            gap: 4px;
+        }
+        .top-btn {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .top-btn:active { background: #E8F5EE; }
+        .address-bar {
+            flex: 1;
+            height: 34px;
+            background: #F0F7F4;
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 12px;
+            color: #999;
+            border: 1px solid #D0E8DD;
+        }
+        .tab-badge { position: relative; }
+        .tab-count {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #2d6a4f;
+            color: white;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            height: 2px;
+            background: #E0E0E0;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #2d6a4f, #52b788);
+        }
+
+        /* 首页内容 */
+        .homepage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 45px;
+            overflow-y: auto;
+        }
+        .logo-card {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(45,106,79,0.1);
+            border: 2px solid #E0F0E9;
+            margin-bottom: 20px;
+        }
+        .app-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        .app-subtitle {
+            font-size: 12px;
+            color: #52b788;
+            margin-bottom: 28px;
+        }
+        .search-card {
+            width: 260px;
+            height: 48px;
+            background: white;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            box-shadow: 0 2px 12px rgba(45,106,79,0.06);
+            border: 1.5px solid #D0E8DD;
+        }
+        .search-text {
+            color: #bbb;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        /* 快捷入口 */
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .quick-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .quick-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8F5EE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s;
+        }
+        .quick-icon:active { transform: scale(0.9); }
+        .quick-label {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* 手机内信息按钮 */
+        .phone-info-section {
+            margin-top: auto;
+            padding: 16px 20px 20px;
+            width: 100%;
+        }
+        .phone-info-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .phone-info-btn {
+            flex: 1;
+            height: 38px;
+            background: #E8F5EE;
+            border: 1px solid #D0E8DD;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #2d6a4f;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .phone-info-btn:hover {
+            background: #d4ede0;
+            transform: translateY(-1px);
+        }
+        .phone-info-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* 底部导航 */
+        .bottom-bar {
+            height: 50px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
+            padding: 0 10px;
+        }
+        .bottom-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+        .bottom-btn.active {
+            opacity: 1;
+            background: #E8F5EE;
+        }
+
+        /* ===== 右侧信息面板 ===== */
+        .info-panel {
+            flex: 1;
+            min-width: 300px;
+            max-width: 420px;
+            background: rgba(255,255,255,0.96);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        .info-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        .info-version {
+            font-size: 14px;
+            color: #52b788;
+            margin-bottom: 20px;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #E8F0EC;
+            font-size: 14px;
+        }
+        .info-label { color: #666; }
+        .info-value { color: #2d6a4f; font-weight: 600; }
+        .feature-list {
+            margin-top: 16px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            font-size: 13px;
+            color: #555;
+        }
+        .feature-dot {
+            width: 6px;
+            height: 6px;
+            background: #52b788;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2d6a4f, #52b788);
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .download-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(45,106,79,0.3);
+        }
+
+        /* ===== 弹窗 ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-card {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: modalIn 0.25s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid #E8F0EC;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d6a4f;
+        }
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: #F0F7F4;
+            color: #2d6a4f;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-body {
+            padding: 20px 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .changelog-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #F0F7F4;
+        }
+        .changelog-version {
+            font-size: 15px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 6px;
+        }
+        .changelog-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        .changelog-list {
+            list-style: none;
+        }
+        .changelog-list li {
+            font-size: 13px;
+            color: #555;
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .changelog-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: #52b788;
+            border-radius: 50%;
+        }
+        .version-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #F0F7F4;
+        }
+        .version-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .version-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #2d6a4f;
+        }
+        .version-size {
+            font-size: 12px;
+            color: #999;
+        }
+        .version-download {
+            padding: 8px 18px;
+            background: #E8F5EE;
+            color: #2d6a4f;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .version-download:hover {
+            background: #d4ede0;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-panel {
+                max-width: 500px;
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .phone {
+                width: 300px;
+                height: 600px;
+            }
+            .info-panel {
+                padding: 20px;
+            }
+            body { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 手机模拟器 -->
+        <div class="phone-wrap">
+            <div class="phone">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>GoWeb</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="top-bar">
+                        <div class="top-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#666"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                        </div>
+                        <div class="address-bar">搜索或输入网址</div>
+                        <div class="top-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                        </div>
+                        <div class="top-btn tab-badge">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#666"><path d="M4 6h4v2H4zm0 5h4v2H4zm0 5h4v2H4zm6-10h10v2H10zm0 5h10v2H10zm0 5h10v2H10z"/></svg>
+                            <span class="tab-count">2</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <div class="homepage">
+                        <div class="logo-card">
+                            <svg width="52" height="52" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </div>
+                        <div class="app-name">GoWeb</div>
+                        <div class="app-subtitle">轻快简洁的安卓浏览器</div>
+                        <div class="search-card">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                            <span class="search-text">搜索或输入网址</span>
+                        </div>
+                        <div class="quick-actions">
+                            <div class="quick-item">
+                                <div class="quick-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                                </div>
+                                <span class="quick-label">书签</span>
+                            </div>
+                            <div class="quick-item">
+                                <div class="quick-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+                                </div>
+                                <span class="quick-label">历史</span>
+                            </div>
+                            <div class="quick-item">
+                                <div class="quick-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                                </div>
+                                <span class="quick-label">下载</span>
+                            </div>
+                            <div class="quick-item">
+                                <div class="quick-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                </div>
+                                <span class="quick-label">设置</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 手机内信息按钮 -->
+                    <div class="phone-info-section">
+                        <div class="phone-info-btns">
+                            <button class="phone-info-btn" onclick="openModal('changelog')">
+                                <svg viewBox="0 0 24 24" fill="#2d6a4f"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                                更新日志
+                            </button>
+                            <button class="phone-info-btn" onclick="openModal('versions')">
+                                <svg viewBox="0 0 24 24" fill="#2d6a4f"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                历史版本
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bottom-bar">
+                        <div class="bottom-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#666"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                        </div>
+                        <div class="bottom-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#666"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </div>
+                        <div class="bottom-btn active">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#2d6a4f"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+                        <div class="bottom-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#666"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧信息面板 -->
+        <div class="info-panel">
+            <div class="info-title">GoWeb 浏览器</div>
+            <div class="info-version">版本 11</div>
+            <div class="info-item">
+                <span class="info-label">包名</span>
+                <span class="info-value">com.goweb.browser</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">大小</span>
+                <span class="info-value">196 KB</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">最低系统</span>
+                <span class="info-value">Android 4.4+</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">目标系统</span>
+                <span class="info-value">Android 13 (API 33)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">主题色</span>
+                <span class="info-value">墨绿 / 竹绿</span>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item"><span class="feature-dot"></span>多标签页浏览</div>
+                <div class="feature-item"><span class="feature-dot"></span>内置二维码扫描</div>
+                <div class="feature-item"><span class="feature-dot"></span>网页翻译</div>
+                <div class="feature-item"><span class="feature-dot"></span>离线保存网页</div>
+                <div class="feature-item"><span class="feature-dot"></span>夜间模式</div>
+                <div class="feature-item"><span class="feature-dot"></span>自定义首页</div>
+            </div>
+            <a href="GoWeb-v11.apk" class="download-btn" download>下载最新版 APK</a>
+        </div>
+    </div>
+
+    <!-- 更新日志弹窗 -->
+    <div class="modal-overlay" id="modal-changelog" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">更新日志</div>
+                <button class="modal-close" onclick="closeModalDirect('changelog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="changelog-item">
+                    <div class="changelog-version">v11 - 大版本更新</div>
+                    <div class="changelog-date">2025-05-04</div>
+                    <ul class="changelog-list">
+                        <li>全面UI美化，首页全新设计</li>
+                        <li>修复标签页显示、URL识别、离线保存等8个bug</li>
+                        <li>新增丰富动画效果（scale/fade/spring）</li>
+                        <li>统一全项目绿色主题配色</li>
+                        <li>修复权限申请和存储路径问题</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <div class="changelog-version">v10 - 问题修复</div>
+                    <div class="changelog-date">2025-05-03</div>
+                    <ul class="changelog-list">
+                        <li>修复17个用户反馈问题</li>
+                        <li>添加自定义对话框替代系统弹窗</li>
+                        <li>优化WebView缓存和内存管理</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <div class="changelog-version">v9 - 签名修复</div>
+                    <div class="changelog-date">2025-05-02</div>
+                    <ul class="changelog-list">
+                        <li>添加APK签名配置</li>
+                        <li>修复安装包异常问题</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <div class="changelog-version">v8 - 主题更新</div>
+                    <div class="changelog-date">2025-05-01</div>
+                    <ul class="changelog-list">
+                        <li>更换为墨绿/竹绿主题色</li>
+                        <li>优化设置页面交互</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <div class="changelog-version">v7 - 功能增强</div>
+                    <div class="changelog-date">2025-04-30</div>
+                    <ul class="changelog-list">
+                        <li>内置二维码扫描器</li>
+                        <li>新增网页翻译功能</li>
+                        <li>修复下载和按钮问题</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 历史版本弹窗 -->
+    <div class="modal-overlay" id="modal-versions" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">历史版本下载</div>
+                <button class="modal-close" onclick="closeModalDirect('versions')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="version-item">
+                    <div class="version-info">
+                        <span class="version-name">GoWeb v11</span>
+                        <span class="version-size">196 KB · Android 4.4+</span>
+                    </div>
+                    <a href="GoWeb-v11.apk" class="version-download" download>下载</a>
+                </div>
+                <div class="version-item">
+                    <div class="version-info">
+                        <span class="version-name">GoWeb v10</span>
+                        <span class="version-size">185 KB · Android 4.4+</span>
+                    </div>
+                    <button class="version-download" onclick="alert('v10 版本暂未归档')">下载</button>
+                </div>
+                <div class="version-item">
+                    <div class="version-info">
+                        <span class="version-name">GoWeb v9</span>
+                        <span class="version-size">180 KB · Android 4.4+</span>
+                    </div>
+                    <button class="version-download" onclick="alert('v9 版本暂未归档')">下载</button>
+                </div>
+                <div class="version-item">
+                    <div class="version-info">
+                        <span class="version-name">GoWeb v8</span>
+                        <span class="version-size">178 KB · Android 4.4+</span>
+                    </div>
+                    <button class="version-download" onclick="alert('v8 版本暂未归档')">下载</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            document.getElementById('modal-' + type).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeModalDirect(type) {
+            document.getElementById('modal-' + type).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

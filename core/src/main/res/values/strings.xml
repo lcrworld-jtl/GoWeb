@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GoWeb</string>
+    <string name="app_subtitle">Fast \u0026 Lightweight Browser</string>
+    <string name="address_hint">Search or enter URL</string>
+    <string name="search_hint">Search or enter address</string>
+
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="refresh">Refresh</string>
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="close">Close</string>
+    <string name="add">Add</string>
+    <string name="share">Share</string>
+    <string name="retry">Retry</string>
+
+    <string name="menu_new_tab">New Tab</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="menu_history">History</string>
+    <string name="menu_download">Downloads</string>
+    <string name="menu_add_bookmark">Add Bookmark</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="bookmark_added">Bookmark added</string>
+    <string name="bookmark_removed">Bookmark removed</string>
+    <string name="add_bookmark">Add Bookmark</string>
+    <string name="edit_bookmark">Edit Bookmark</string>
+    <string name="title_label">Title</string>
+    <string name="url_label">URL</string>
+    <string name="url_empty">URL cannot be empty</string>
+    <string name="no_bookmarks">No bookmarks</string>
+    <string name="no_history">No history</string>
+    <string name="no_downloads">No downloads</string>
+
+    <string name="page_load_error">Page load error</string>
+    <string name="downloading">Downloading…</string>
+    <string name="copied">Copied</string>
+    <string name="link_copied">Link copied</string>
+    <string name="save_image">Save image</string>
+    <string name="copy_image_url">Copy image URL</string>
+    <string name="copy_link">Copy link</string>
+    <string name="open_in_new_tab">Open in new tab</string>
+    <string name="download_manager_not_available">Download manager not available</string>
+
+    <string name="clear_history">Clear History</string>
+    <string name="history_cleared">History cleared</string>
+
+    <string name="settings_search_engine">Search Engine</string>
+    <string name="settings_homepage">Homepage</string>
+    <string name="settings_user_agent">User Agent</string>
+    <string name="settings_font_size">Font Size</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_night_mode">Night Mode</string>
+    <string name="settings_privacy_mode">Privacy Mode</string>
+    <string name="settings_enable_js">Enable JavaScript</string>
+    <string name="settings_enable_cookies">Enable Cookies</string>
+    <string name="settings_block_images">Block Images</string>
+    <string name="settings_clear_cache">Clear Cache</string>
+    <string name="settings_clear_history">Clear History</string>
+    <string name="settings_clear_cookies">Clear Cookies</string>
+    <string name="settings_clear_all">Clear All Data</string>
+    <string name="settings_about">About</string>
+    <string name="settings_saved">Saved</string>
+
+    <string name="ua_mobile">Mobile</string>
+    <string name="ua_pc">Desktop</string>
+    <string name="ua_custom">Custom</string>
+
+    <string name="language_auto">System Default</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+
+    <string name="night_mode_on">Night mode enabled</string>
+    <string name="night_mode_off">Night mode disabled</string>
+    <string name="privacy_mode_on">Privacy mode enabled</string>
+    <string name="privacy_mode_off">Privacy mode disabled</string>
+    <string name="js_enabled">JavaScript enabled</string>
+    <string name="js_disabled">JavaScript disabled</string>
+    <string name="cookies_enabled">Cookies enabled</string>
+    <string name="cookies_disabled">Cookies disabled</string>
+    <string name="images_blocked">Images blocked</string>
+    <string name="images_allowed">Images allowed</string>
+
+    <string name="confirm_clear_cache">Clear all cache data?</string>
+    <string name="confirm_clear_history">Clear all browsing history?</string>
+    <string name="confirm_clear_cookies">Clear all cookies?</string>
+    <string name="confirm_clear_all">Clear all data including bookmarks, history and settings?</string>
+    <string name="cache_cleared">Cache cleared</string>
+    <string name="cookies_cleared">Cookies cleared</string>
+    <string name="all_data_cleared">All data cleared</string>
+
+    <string name="about_message">%1$s v%2$s\nA lightweight, fast and minimal browser.\nSupport Android 4.4+</string>
+
+    <!-- Error page strings -->
+    <string name="error_tips_title">Try the following</string>
+    <string name="error_tip_1">Check your network connection</string>
+    <string name="error_tip_2">Check if the URL is correct</string>
+    <string name="error_tip_3">Try again later or visit another site</string>
+    <string name="error_host_lookup">Server not found, please check the URL</string>
+    <string name="error_connect">Cannot connect to server, please check your network</string>
+    <string name="error_timeout">Connection timed out, please check your network or try again later</string>
+    <string name="error_ssl">SSL certificate error, the site may have security issues</string>
+    <string name="error_unknown">An unknown error occurred, please try again later</string>
+
+    <!-- Download strings -->
+    <string name="download_success">Completed</string>
+    <string name="download_pending">Pending</string>
+    <string name="download_running">Downloading</string>
+    <string name="download_paused">Paused</string>
+    <string name="download_failed">Failed</string>
+    <string name="download_unknown">Unknown</string>
+    <string name="download_not_complete">Download not complete</string>
+    <string name="cannot_open_file">Cannot open file</string>
+    <string name="confirm_delete_download">Delete this download?</string>
+
+    <!-- Tab strings -->
+    <string name="tabs">Tabs</string>
+    <string name="new_tab">New Tab</string>
+    <string name="tab_count">%d tabs</string>
+
+    <!-- New feature strings -->
+    <string name="scan_qr">Scan QR</string>
+    <string name="scan_qr_desc">Scan QR code</string>
+    <string name="find_in_page">Find in page</string>
+    <string name="view_source">View source</string>
+    <string name="add_to_desktop">Add to desktop</string>
+    <string name="save_offline">Save offline</string>
+    <string name="saved_offline">Saved offline</string>
+    <string name="qr_scan_result">Scan result</string>
+    <string name="qr_scan_invalid">Invalid QR code</string>
+    <string name="find_hint">Enter search text</string>
+    <string name="find_matches">%1$d/%2$d</string>
+    <string name="find_no_matches">Not found</string>
+    <string name="source_title">Source: %s</string>
+    <string name="shortcut_added">Shortcut added</string>
+    <string name="shortcut_failed">Failed to add shortcut</string>
+
+    <!-- Translate strings -->
+    <string name="translate_page">Translate page</string>
+    <string name="translating">Translating...</string>
+    <string name="saved_pages">Saved Pages</string>
+
+    <!-- Settings new strings -->
+    <string name="settings_homepage_bg">Homepage background</string>
+    <string name="settings_homepage_icon">Homepage icon</string>
+    <string name="settings_custom_font">Custom font</string>
+    <string name="settings_set_default">Set as default browser</string>
+    <string name="select_image">Select image</string>
+    <string name="select_font">Select font file</string>
+    <string name="bg_set">Background set</string>
+    <string name="icon_set">Icon set</string>
+    <string name="font_set">Font set</string>
+    <string name="default_browser_set">Set as default browser</string>
+    <string name="default_browser_failed">Failed to set default browser</string>
+
+    <!-- Toggle states -->
+    <string name="state_on">On</string>
+    <string name="state_off">Off</string>
+
+    <!-- Time format strings -->
+    <string name="time_just_now">Just now</string>
+    <string name="time_min_ago">min ago</string>
+    <string name="time_hours_ago">hours ago</string>
+    <string name="time_days_ago">days ago</string>
+
+    <!-- QR Scan -->
+    <string name="qr_scan_hint">Place the QR code in the frame to scan</string>
+
+    <!-- App version -->
+    <string name="app_version">1.0.0</string>
+
+    <!-- Misc -->
+    <string name="press_again_to_exit">Press again to exit</string>
+    <string name="camera_permission_denied">Camera permission required to scan</string>
+    <string name="camera_open_failed">Cannot open camera</string>
+    <string name="camera_denied">Camera permission denied</string>
+    <string name="view_source_failed">Cannot get source code</string>
+    <string name="view_source_error">Failed to get source code</string>
+    <string name="android_8_required">Android 8.0+ required</string>
+    <string name="operation_failed">Failed</string>
+    <string name="save_failed">Save failed</string>
+    <string name="tabs_load_failed">Failed to load tabs</string>
+    <string name="no_saved_pages">No saved pages</string>
+    <string name="storage_permission_granted">Storage permission granted</string>
+    <string name="storage_permission_denied">Storage permission denied</string>
+    <string name="no_tabs">No tabs</string>
+    <string name="restore_default">Restore Default</string>
+    <string name="restored_default">Restored to default</string>
+    <string name="qr_manual_hint">If scanning doesn\'t work, you can manually enter the URL or paste from clipboard:</string>
+    <string name="qr_input_hint">Enter URL or text</string>
+    <string name="qr_scan_title">QR Code Scanner</string>
+    <string name="paste_from_clipboard">Paste</string>
+    <string name="go">Go</string>
+
+    <string name="ssl_error_title">SSL Certificate Error</string>
+    <string name="ssl_error_message">The site\'s security certificate is not trusted. Continue anyway?</string>
+    <string name="btn_continue">Continue</string>
+    <string name="confirm_resubmission_title">Confirm Resubmission</string>
+    <string name="confirm_resubmission_message">This page requires data that you entered earlier. Resend the data?</string>
+    <string name="btn_resend">Resend</string>
+    <string name="location_access_title">Location Access</string>
+    <string name="location_access_message">Allow %1$s to access your location?</string>
+    <string name="btn_allow">Allow</string>
+    <string name="btn_deny">Deny</string>
+    <string name="select_file">Select File</string>
+    <string name="btn_open">Open</string>
+    <string name="btn_copy">Copy</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="version_history_title">Version History</string>
+    <string name="about_text">GoWeb v1.0.0\nLightweight Browser | Developed by LCR Team\nSupport Android 4.4+</string>
+    <string name="new_tab_default">New Tab</string>
+    <string name="download_desc">GoWeb Download</string>
+    <string name="camera_permission_title">Camera Permission</string>
+    <string name="camera_permission_rationale">Camera access is needed to scan QR codes. Please grant permission to continue.</string>
+    <string name="storage_permission_title">Storage Permission</string>
+    <string name="storage_permission_rationale">Storage access is needed to save files. Please grant permission to continue.</string>
+</resources>

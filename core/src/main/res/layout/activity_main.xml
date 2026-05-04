@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAF9">
+
+    <!-- ========== 顶部工具栏 ========== -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:id="@+id/btn_refresh"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_refresh" />
+
+        <EditText
+            android:id="@+id/address_bar"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/search_bg"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:hint="@string/address_hint"
+            android:imeOptions="actionGo"
+            android:inputType="textUri"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:singleLine="true"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/btn_bookmark"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_bookmark_outline" />
+
+        <ImageView
+            android:id="@+id/btn_scan"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_scan" />
+
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="2dp">
+
+            <ImageView
+                android:id="@+id/btn_tabs"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_tab" />
+
+            <TextView
+                android:id="@+id/tab_count"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/tab_count_bg"
+                android:gravity="center"
+                android:minWidth="16dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="3dp"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- ========== 进度条 ========== -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/top_bar"
+        android:progressDrawable="@drawable/progress_drawable"
+        android:visibility="gone" />
+
+    <!-- ========== WebView 容器 ========== -->
+    <FrameLayout
+        android:id="@+id/webview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/progress_bar"
+        android:visibility="gone" />
+
+    <!-- ========== 触摸拦截层 ========== -->
+    <View
+        android:id="@+id/touch_interceptor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/top_bar"
+        android:visibility="gone" />
+
+    <!-- ========== 首页 ========== -->
+    <LinearLayout
+        android:id="@+id/homepage_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/progress_bar"
+        android:background="#F8FAF9"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:visibility="visible">
+
+        <!-- Logo 卡片 -->
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/logo_bg"
+            android:gravity="center"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/homepage_icon"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/ic_globe" />
+        </LinearLayout>
+
+        <!-- 应用名称 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/app_name"
+            android:textColor="#2d6a4f"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- 副标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:text="@string/app_subtitle"
+            android:textColor="#52b788"
+            android:textSize="12sp" />
+
+        <!-- 搜索卡片 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/search_card_bg"
+            android:elevation="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/homepage_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionGo"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 快捷入口 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/quick_bookmark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="6dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_bookmark"
+                    android:background="@drawable/quick_action_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="书签"
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/quick_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="6dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_history"
+                    android:background="@drawable/quick_action_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="历史"
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/quick_download"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="6dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_file"
+                    android:background="@drawable/quick_action_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="下载"
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/quick_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="6dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_menu"
+                    android:background="@drawable/quick_action_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="设置"
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 占位空间，将按钮推到底部 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- 底部信息按钮区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/btn_changelog"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/phone_info_btn_bg"
+                android:gravity="center"
+                android:text="更新日志"
+                android:textColor="#2d6a4f"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/btn_old_versions"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/phone_info_btn_bg"
+                android:gravity="center"
+                android:text="历史版本"
+                android:textColor="#2d6a4f"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========== 建议面板 ========== -->
+    <LinearLayout
+        android:id="@+id/suggestion_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/top_bar"
+        android:background="#FFFFFF"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/suggestion_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#F0F0F0"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+
+    <!-- ========== 底部导航栏 ========== -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_back"
+            android:alpha="0.5" />
+
+        <ImageView
+            android:id="@+id/btn_forward"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_forward"
+            android:alpha="0.5" />
+
+        <ImageView
+            android:id="@+id/btn_home"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_home"
+            android:alpha="0.5" />
+
+        <ImageView
+            android:id="@+id/btn_menu"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_menu"
+            android:alpha="0.5" />
+    </LinearLayout>
+
+    <!-- ========== 全屏容器 ========== -->
+    <FrameLayout
+        android:id="@+id/fullscreen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+</RelativeLayout>

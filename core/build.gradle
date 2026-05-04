@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.goweb.browser'
+    compileSdk 36
+    buildToolsVersion "37.0.0"
+
+    defaultConfig {
+        applicationId "com.goweb.browser"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 100
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("${rootDir}/keystore.jks")
+            storePassword "goweb123"
+            keyAlias "goweb"
+            keyPassword "goweb123"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    aaptOptions {
+        cruncherEnabled false
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+    implementation project(':extension')
+    implementation project(':plugin-sdk')
+}
