@@ -1,0 +1,3 @@
+include ':core'
+include ':extension'
+include ':plugin-sdk'
