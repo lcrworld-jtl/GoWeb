@@ -24,7 +24,7 @@
 
 ### Introduction
 
-GoWeb is a lightweight Android browser developed by the **LCR Team**. Built with pure Java and Android WebView, it delivers a smooth browsing experience while maintaining a tiny footprint (under 1MB). Designed with a green theme (#2d6a4f / #52b788), it offers both aesthetics and functionality.
+GoWeb is a lightweight Android browser developed by the **lcrworld**. Built with pure Java and Android WebView, it delivers a smooth browsing experience while maintaining a tiny footprint (under 1MB). Designed with a green theme (#2d6a4f / #52b788), it offers both aesthetics and functionality.
 
 > **Version**: v1.0.0
 
@@ -128,7 +128,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 简介
 
-GoWeb 是一款由 **LCR 团队** 开发的轻量级安卓浏览器。使用纯 Java 和 Android WebView 构建，在保持极小体积（不到 1MB）的同时，提供流畅的浏览体验。采用绿色主题（#2d6a4f / #52b788），兼具美观与实用。
+GoWeb 是一款由 **lcrworld** 开发的轻量级安卓浏览器。使用纯 Java 和 Android WebView 构建，在保持极小体积（不到 1MB）的同时，提供流畅的浏览体验。采用绿色主题（#2d6a4f / #52b788），兼具美观与实用。
 
 > **版本**: v1.0.0
 
@@ -228,5 +228,5 @@ GoWeb/
 ---
 
 <p align="center">
-  Developed by LCR Team | MIT License
+  Developed by lcrworld | MIT License
 </p>
